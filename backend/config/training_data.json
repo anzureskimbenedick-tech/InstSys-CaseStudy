@@ -11482,6 +11482,366 @@
       "final_answer": "Yes, I'm here and ready to assist you. I have access to information about the institutional identity, including mission and vision statements, from the Pambayang Dalubhasaan ng Marilao database.\n\n- The database contains information about institutional identity, mission, and vision statements `[system_summary]`.\n- There are 2 documents related to institutional identity, mission, and vision `[collection_info]`.",
       "error_message": null,
       "corruption_details": null
+    },
+    {
+      "query": "hi",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 12.863836526870728,
+      "timestamp": "2025-10-27T23:32:59.366171",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you with information about our institution, including our mission, vision, and other key details. How can I assist you today? [system_summary]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "ok",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.8164567947387695,
+      "timestamp": "2025-10-27T23:33:20.955270",
+      "final_answer": "The database contains information about the institutional identity, including mission and vision statements.\n\n- The database contains 1 collection.\n- The 'institutional_identity_mission_vision' collection has 2 documents. [collection_info]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "a",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.9995379447937012,
+      "timestamp": "2025-10-27T23:37:13.430824",
+      "final_answer": "I don't know. The information is not available in the documents.",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.9371042251586914,
+      "timestamp": "2025-10-27T23:37:40.302508",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you find information about our institution, students, faculty, and more. Here's what I know:\n\n- The database contains information about institutional identity, including mission and vision statements.\n- Key information includes content type, data type, department, document type, and institution name.\n\nIf you have any specific questions, feel free to ask!",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "okay okay",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.6292388439178467,
+      "timestamp": "2025-10-27T23:38:09.164663",
+      "final_answer": "I'm sorry, but I couldn't find any relevant information in the provided documents to answer your query. If you have any other questions or need assistance with something specific, please let me know.",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "good",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.360645294189453,
+      "timestamp": "2025-10-27T23:41:49.669595",
+      "final_answer": "I'm glad to hear that you're doing well! Here are some details about the data I have access to:\n\n- The database contains 1 collection `[system_summary]`.\n- The collection 'institutional_identity_mission_vision' has 2 documents, which include information about the institution's mission, vision, and other key details `[collection_info]`.",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hi",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.2378265857696533,
+      "timestamp": "2025-10-27T23:41:49.925780",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you find information about the school, its programs, faculty, and students. How can I assist you today?",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.8041365146636963,
+      "timestamp": "2025-10-27T23:43:29.605246",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you find information about students, faculty, schedules, and academic programs. How can I assist you today?",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.419588804244995,
+      "timestamp": "2025-10-27T23:45:50.656097",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you with information about our institution, including our mission, vision, and other key details. How can I assist you today?\n\n- I have access to information about our institutional identity, including mission and vision statements.\n- The database contains information about our institution's mission and vision.\n- I can provide details about our institution's mission and vision when requested. [system_summary]\n- The collection 'institutional_identity_mission_vision' contains 2 documents with key information about our institution's mission and vision. [collection_info]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.97092604637146,
+      "timestamp": "2025-10-27T23:48:01.451027",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you find information about our institution, students, faculty, and more. Here's a summary of what I know:\n\n- Institutional Identity and Mission/Vision: I have information about the institution's mission, vision, and other key documents. [system_summary]\n- Collection Information: I have access to a collection named 'institutional_identity_mission_vision' which contains 2 documents with details about the institution's identity and mission/vision. [collection_info]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.8761928081512451,
+      "timestamp": "2025-10-27T23:50:04.967378",
+      "final_answer": "Hello! I'm an AI Data Analyst for PDM or Pambayang Dalubhasaan ng Marilao. I can help you find information about the school's mission, vision, and other institutional details. How can I assist you today? [system_summary]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.907212257385254,
+      "timestamp": "2025-10-27T23:51:03.050882",
+      "final_answer": "Hello! I'm an AI Data Analyst for PDM or Pambayang Dalubhasaan ng Marilao. I can help you find information about the school's mission, vision, and other institutional details. I can also provide lists of students, faculty, and staff, as well as class schedules and academic programs. How can I assist you today? [system_summary]",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "magic magic",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.880171537399292,
+      "timestamp": "2025-10-27T23:52:05.079633",
+      "final_answer": "I'm sorry, but I couldn't find any relevant information related to \"magic magic\" in the provided documents.",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "mag-chat",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 1.8787596225738525,
+      "timestamp": "2025-10-27T23:53:39.504105",
+      "final_answer": "I'm sorry, but I couldn't find any relevant information about \"mag-chat\" in the provided documents. The documents only mention a database containing institutional identity, mission, and vision information. If you have any other questions or need further assistance, feel free to ask.",
+      "error_message": null,
+      "corruption_details": null
+    },
+    {
+      "query": "hello",
+      "plan": {
+        "plan": [
+          {
+            "step": 1,
+            "thought": "AI selected the best tool on attempt 1.",
+            "tool_call": {
+              "tool_name": "get_database_summary",
+              "parameters": {}
+            }
+          }
+        ]
+      },
+      "outcome": "SUCCESS_DIRECT",
+      "analyst_mode": "online",
+      "execution_mode": "primary",
+      "results_count": 2,
+      "execution_time": 2.472970485687256,
+      "timestamp": "2025-10-27T23:55:50.736427",
+      "final_answer": "Hello! I'm an AI Data Analyst for Pambayang Dalubhasaan ng Marilao. I can help you find information about our institution, students, faculty, and more. Here's a summary of what I know:\n\n- Institutional Identity and Mission/Vision: I have information about our institution's mission, vision, and other key documents. [system_summary]\n- Collection Information: I have access to a collection named 'institutional_identity_mission_vision' which contains 2 documents. [collection_info]",
+      "error_message": null,
+      "corruption_details": null
     }
   ],
   "query_patterns": {},

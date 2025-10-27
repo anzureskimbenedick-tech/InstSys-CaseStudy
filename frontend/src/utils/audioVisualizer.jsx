@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import * as THREE from "three";
 
-export default function AudioVisualizer({ toggleHolo, audioStream }) {
+export default function AudioVisualizer({ toggleHolo, toggleMic, audioStream }) {
   const mountRef = useRef(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
     console.log("AudioVisualizer mounted");
@@ -50,8 +51,10 @@ export default function AudioVisualizer({ toggleHolo, audioStream }) {
       console.log("AudioStream detected", audioStream);
       const bufferLength = audioStream.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
+      setIsSpeaking((prev) => !prev);
       console.log("dataArray created with length:", bufferLength);
     }
+    console.log("speaking:", isSpeaking);
 
     let animationId;
     const animate = () => {
@@ -76,9 +79,9 @@ export default function AudioVisualizer({ toggleHolo, audioStream }) {
         const rotationSpeed = 0.001 + avg / 5000;
         sphere.rotation.x += rotationSpeed;
         sphere.rotation.y += rotationSpeed;
-
+        if (avg > 0) setIsSpeaking(true);
       }
-
+      
       renderer.render(scene, camera);
     };
     animate();
@@ -103,18 +106,18 @@ export default function AudioVisualizer({ toggleHolo, audioStream }) {
     >
       {/* Toggle Button (top-right) */}
       <button
-        onClick={toggleHolo}
-        className="fixed top-1 right-1 w-[5vw] rounded-full aspect-square bg-gray-500 shadow-black/40 shadow-lg"
-      />
+        onClick={() => {
+          toggleHolo();
+          toggleMic();
+        }}
+        title="exit"
+        className="fixed top-5 right-5 w-[3vw] rounded-full aspect-square bg-gray-500/30 shadow-black/40 shadow-lg hover:scale-102 duration-300 cursor-pointer"
+      >
+        <img src="./ico/white-cross.svg" alt="" />
+      </button>
 
       {/* Main 3D scene area */}
       <div className="flex rounded-2xl flex-grow" ref={mountRef}></div>
-
-      {/* Bottom-right buttons */}
-      <div className="fixed flex flex-col gap-2 items-center bottom-2 right-2 w-fit h-fit">
-        <button className="w-[5vw] rounded-full aspect-square bg-gray-500 shadow-black/40 shadow-lg"></button>
-        <button className="w-[5vw] rounded-full aspect-square bg-gray-500 shadow-black/40 shadow-lg"></button>
-      </div>
     </motion.div>
   );
 }

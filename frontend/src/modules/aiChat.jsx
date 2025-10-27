@@ -31,7 +31,7 @@ function AiChat({
       const result = await puterSpeak(response, { voice: "Lupe" });
       if (result) setVisualizerStream(result);
     };
-    speakResponse();
+    if (holoOn) speakResponse();
   }, [response]);
 
   // ========================
@@ -50,7 +50,11 @@ function AiChat({
   // ========================
   const containerVariants = {
     hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
     exit: { opacity: 0, y: -15, transition: { duration: 0.3, ease: "easeIn" } },
   };
 
@@ -172,7 +176,10 @@ function AiChat({
                 <div className="w-full h-[70%] flex items-center">
                   {/* Holo Toggle */}
                   <button
-                    onClick={toggleHolo}
+                    onClick={() => {
+                      toggleHolo();
+                      toggleMic();
+                    }}
                     className="mic rounded-full w-[2.5vw] h-[2.5vw] mr-1 aspect-square flex items-center justify-center cursor-pointer transition-transform transform-gpu duration-300 hover:scale-105 bg-gray-300 p-2 shadow-black/30 shadow-md"
                   >
                     <svg
@@ -323,7 +330,15 @@ function AiChat({
           >
             <AudioVisualizer
               toggleHolo={toggleHolo}
+              toggleMic={toggleMic}
               audioStream={visualizerStream}
+            />
+            <VoiceInput
+              setInput={setInput}
+              micON={micON}
+              sendMessage={sendMessage}
+              toggleMic={toggleMic}
+              mode={holoOn}
             />
           </motion.div>
         )}

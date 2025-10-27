@@ -1,6 +1,12 @@
 import React, { useEffect, useState, useRef, use } from "react";
 
-export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  }) {
+export default function VoiceInput({
+  setInput,
+  micON,
+  sendMessage,
+  toggleMic,
+  mode
+}) {
   const [transcript, setTranscript] = useState("");
   const audioRef = useRef(null);
 
@@ -11,8 +17,7 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
   const analyserRef = useRef(null);
   const dataArrayRef = useRef(null);
 
-  const recognitionRef = useRef(null); 
-
+  const recognitionRef = useRef(null);
 
   /*
   MICROPHONE SETUP
@@ -34,7 +39,7 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
   Finally we have cleanup code to stop the mic and disconnect everything when micON is false or component unmounts
   */
 
-   /*
+  /*
   SPEECH RECOGNITION SETUP
   - We check if the browser supports SpeechRecognition API
   - If supported, we create a new instance of SpeechRecognition
@@ -47,7 +52,7 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
   - We update the transcript state and also call setInput to update the input field in real-time
   - If the result is final, we clear the transcript and toggle the mic off (which stops recognition)
   - We also have cleanup code to stop recognition and clear handlers when mic is turned off or component unmounts
-   */ 
+   */
 
   useEffect(() => {
     console.log("micON changed:", micON);
@@ -55,11 +60,14 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
     const startListening = async () => {
       try {
         // 1. Access microphone
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
         micStreamRef.current = stream;
 
         // 2. Media or Audio environment whatever you wanna call it
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
         audioContextRef.current = audioContext;
 
         // 3. This is like the audio board where you create different nodes
@@ -82,8 +90,12 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
         analyserRef.current = analyser;
 
         // 5. Speech Recognition Setup
-        if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
-          const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (
+          "webkitSpeechRecognition" in window ||
+          "SpeechRecognition" in window
+        ) {
+          const SpeechRecognition =
+            window.SpeechRecognition || window.webkitSpeechRecognition;
           const recognition = new SpeechRecognition();
           recognition.continuous = true;
           recognition.interimResults = true;
@@ -91,24 +103,33 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
 
           // We store the transcript in a ref so we can access it in the onresult handler
           recognition.onresult = (event) => {
-            let interimTranscript  = '';
+            let interimTranscript = "";
             for (let i = event.resultIndex; i < event.results.length; ++i) {
               interimTranscript += event.results[i][0].transcript;
             }
             // Then we set the transcript state and also update the input field in real-time
             // This way the user can see what they are saying as they speak
-            console.log("Transcript:", interimTranscript );
+            console.log("Transcript:", interimTranscript);
             setTranscript(interimTranscript);
             setInput(interimTranscript);
 
             // After setting the interim transcript, we check if the result is final
-            if (event.results[event.results.length - 1].isFinal && interimTranscript.trim() !== "") {
+            if (
+              event.results[event.results.length - 1].isFinal &&
+              interimTranscript.trim() !== ""
+            ) {
               console.log("Final transcript, submitting:", interimTranscript);
               sendMessage(interimTranscript);
               setTranscript("");
               setInput("");
               interimTranscript = "";
-              toggleMic();
+              if (!mode) {
+                // 🧠 Normal mode: stop listening after one message
+                toggleMic();
+              } else {
+                // 🎙️ Continuous (Holo) mode: keep listening
+                console.log("Continuous mode active — staying on mic");
+              }
             }
           };
 
@@ -120,7 +141,9 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
           recognition.start();
           console.log("Speech recognition started.");
         } else {
-          console.log("Speech Recognition API is not supported in this browser.");
+          console.log(
+            "Speech Recognition API is not supported in this browser."
+          );
           alert("Speech Recognition API is not supported in this browser.");
           toggleMic();
         }
@@ -137,7 +160,7 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
           if (avg > 30) {
             console.log("Voice detected:", avg);
           }
-          requestAnimationFrame(detectVoice); //This would be on loop para constanly ni chcheck niya yung media data 
+          requestAnimationFrame(detectVoice); //This would be on loop para constanly ni chcheck niya yung media data
         };
 
         // Start the whole function on loop
@@ -169,22 +192,25 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
         analyserRef.current = null;
 
         // 4. Close the AudioContext safely
-        if (audioContextRef.current && audioContextRef.current.state !== "closed") {
+        if (
+          audioContextRef.current &&
+          audioContextRef.current.state !== "closed"
+        ) {
           audioContextRef.current.close();
           console.log("micON changed:", micON);
         } else {
           console.log("AudioContext already closed — skipping");
         }
-          if (recognitionRef.current) {
-            recognitionRef.current.stop();        
-            recognitionRef.current.onresult = null;
-            recognitionRef.current.onerror = null;
-            recognitionRef.current = null;
-            console.log("Speech recognition stopped.");
+        if (recognitionRef.current) {
+          recognitionRef.current.stop();
+          recognitionRef.current.onresult = null;
+          recognitionRef.current.onerror = null;
+          recognitionRef.current = null;
+          console.log("Speech recognition stopped.");
         }
 
-      // Optional: Reset transcript state if desired
-      setTranscript("");
+        // Optional: Reset transcript state if desired
+        setTranscript("");
 
         audioContextRef.current = null;
       } catch (err) {
@@ -201,12 +227,20 @@ export default function VoiceInput({ setInput, micON, sendMessage, toggleMic  })
     return stopListening;
   }, [!micON]);
 
-
-  return (
-    micON ? <div className="flex flex-col">
-      <div className="w-full px-4 text-sm text-gray-600">Listening...</div>
-      <div className="w-full px-4">{transcript}</div>
-    </div> : null
-  )
-
+  return micON ? (
+    <div className="flex flex-col">
+      <div
+        className={`${
+          !mode
+            ? "w-full px-4 text-sm text-gray-600"
+            : "text-white text-2xl font-light"
+        }`}
+      >
+        Listening...
+      </div>
+      <div className={`${!mode ? "w-full px-4" : "text-lg text-white"}`}>
+        {transcript}
+      </div>
+    </div>
+  ) : null;
 }
